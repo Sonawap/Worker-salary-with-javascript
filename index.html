@@ -18,30 +18,35 @@
 		<div class="col-md-6">
             <div class="conn-wrap">
                 <h4 class="text-center">Enter Employee working hours info</h4>
-                <div class="form-group">
-                    <label class="control-label">Hour Worked</label>
-                    <input class="form-control" v-model="hours" type="number" name="title" required placeholder="Enter Hour Sift" >
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label">Extra Hours?</label>
-                    <input class="form-control" type="number" v-model="extrahours" name="title"  placeholder="Enter Hour Sift" value="0" >
-                    <p style="font-size: 12px;">Leave empty if no extra hour worked by employee</p>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label">Amount by hour</label>
-                    <input class="form-control" type="number" v-model="price" name="title"  placeholder="500" value="500">
-                    <p style="font-size: 12px;">NGN 500 by default</p>
-                </div>
-
-                <button class="btn btn-large btn-primary" @click="calculateSalary">Calculate Salary</button>
+                <form @submit.prevent="calculateSalary">
+                    <div class="form-group">
+                        <label class="control-label">Hour Worked</label>
+                        <input class="form-control" v-model="hours" max="4" type="number" name="title" required placeholder="Enter Hour Sift" >
+                        <p>Maximun allow is 4 hours</p>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="control-label">Extra Hours?</label>
+                        <input class="form-control" type="number" v-model="extrahours" name="title"  placeholder="Enter Hour Sift" value="0" >
+                        <p style="font-size: 12px;">Leave empty if no extra hour worked by employee (200 per hours as tip for extra hours worked)</p>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="control-label">Amount by hour</label>
+                        <input class="form-control" type="number" v-model="price" name="title"  placeholder="500" value="500">
+                        <p style="font-size: 12px;">NGN 1000 by default</p>
+                    </div>
+    
+                    <button class="btn btn-large btn-primary" type="submit">Calculate Salary</button>
+                </form>
             </div>
         </div>
 		<div class="col-md-6">
             <div class="conn-wrap">
                 <h4>Amount Earned by Employee</h4>
-                <h1>{{ earn }} NGN</h1>
+                <h1>Extra Earning: {{ xearn }} NGN</h1>
+                <h1>Wages Earning: {{ earn }} NGN</h1>
+                <h1>Total Earning: {{ tearn }} NGN</h1>
             </div>
         </div>
 	</div>
