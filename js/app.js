@@ -20,6 +20,7 @@ new Vue({
                 this.error = true;
             }
             if(this.hours < 5 ){
+                this.extrahours = 0
                 var normalHours = parseInt(this.hours) * parseInt(this.price)
                 var extraHours = parseInt(this.extrahours) * parseInt(this.extraPrice)
                 this.xearn = extraHours
