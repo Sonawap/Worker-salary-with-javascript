@@ -15,20 +15,26 @@ new Vue({
     },
     methods:{
         calculateSalary(){
-            // Calculate the Employee Earning without extra Hours
-
-            if(this.extrahours == 0){
-                this.earn = parseInt(this.hours) * parseInt(this.price)
-                this.tearn = parseInt(this.hours) * parseInt(this.price)
-            }
-
             // Calculate the Employee Earning witho extra Hours
-            if(this.extrahours > 0){
+            if(this.hours < 0){
+                this.error = true;
+            }
+            if(this.hours < 5 ){
                 var normalHours = parseInt(this.hours) * parseInt(this.price)
                 var extraHours = parseInt(this.extrahours) * parseInt(this.extraPrice)
                 this.xearn = extraHours
                 this.earn =  normalHours
                 this.tearn = normalHours + extraHours
+            }
+
+            if(this.hours > 4){
+                this.extrahours = this.hours - 4
+                var normalHours = parseInt(this.hours) * parseInt(this.price)
+                var extraHours = parseInt(this.extrahours) * parseInt(this.extraPrice)
+                this.xearn = extraHours
+                this.earn =  normalHours
+                this.tearn = normalHours + extraHours
+                
             }
         },
 
